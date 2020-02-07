@@ -36,6 +36,16 @@ LLVMModule >> emitBitCodeToMemoryBuffer [
 ]
 
 { #category : #finalization }
+LLVMModule >> emitTargetMachineCode: aTargetMachine toMemoryBuffer: aMemBufferPtr withFileType: aCodeFileType withError: anErrorHolder [
+
+	^ self ffiCall: #(Boolean LLVMTargetMachineEmitToMemoryBuffer(LLVMTargetMachine aTargetMachine,
+																					 self,
+																					 LLVMCodeGenFileType aCodeFileType,
+																					 char** anErrorHolder,
+																					 LLVMMemoryBuffer* aMemBufferPtr))
+]
+
+{ #category : #finalization }
 LLVMModule >> ffiLibrary [
 
 	^ self class ffiLibrary
