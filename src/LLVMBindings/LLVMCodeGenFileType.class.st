@@ -2,8 +2,8 @@ Class {
 	#name : #LLVMCodeGenFileType,
 	#superclass : #FFIEnumeration,
 	#classVars : [
-		'LLVMAssemblyFile',
-		'LLVMObjectFile'
+		'llvmAssemblyFile',
+		'llvmObjectFile'
 	],
 	#category : #'LLVMBindings-Enumeration'
 }
@@ -12,8 +12,8 @@ Class {
 LLVMCodeGenFileType class >> enumDecl [ 
 
 	^ #(
-	LLVMAssemblyFile 0
-	LLVMObjectFile   1
+	llvmAssemblyFile 0
+	llvmObjectFile   1
 	)
 	
 

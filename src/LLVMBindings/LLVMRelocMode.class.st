@@ -8,7 +8,14 @@ Class {
 		'LLVMRelocROPI',
 		'LLVMRelocROPI_RWPI',
 		'LLVMRelocRWPI',
-		'LLVMRelocStatic'
+		'LLVMRelocStatic',
+		'llvmRelocDefault',
+		'llvmRelocDynamicNoPic',
+		'llvmRelocPIC',
+		'llvmRelocROPI',
+		'llvmRelocROPI_RWPI',
+		'llvmRelocRWPI',
+		'llvmRelocStatic'
 	],
 	#category : #'LLVMBindings-Enumeration'
 }
@@ -17,12 +24,12 @@ Class {
 LLVMRelocMode class >> enumDecl [
 
 	^ #(
-	LLVMRelocDefault      0
-	LLVMRelocStatic       1
-	LLVMRelocPIC          2
-	LLVMRelocDynamicNoPic 3
-	LLVMRelocROPI         4
-	LLVMRelocRWPI         5
-	LLVMRelocROPI_RWPI    6
+	llvmRelocDefault      0
+	llvmRelocStatic       1
+	llvmRelocPIC          2
+	llvmRelocDynamicNoPic 3
+	llvmRelocROPI         4
+	llvmRelocRWPI         5
+	llvmRelocROPI_RWPI    6
 	)
 ]

@@ -5,6 +5,12 @@ Class {
 }
 
 { #category : #'instance creation' }
+LLVMBuilder class >> ffiLibrary [
+
+	^ 'libLLVM.dylib' asFFILibrary
+]
+
+{ #category : #'instance creation' }
 LLVMBuilder class >> new [
 
 	^ self ffiCall: #(LLVMBuilder LLVMCreateBuilder())
@@ -13,10 +19,10 @@ LLVMBuilder class >> new [
 { #category : #building }
 LLVMBuilder >> buildAdd: aValue to: anotherValue andStoreUnder: aTemporaryValueName [
 
-	^ self ffiCall: #(LLVMValueRef LLVMBuildAdd	(self,
-                                               LLVMValue 	 aValue,
-                                               LLVMValue 	 anotherValue,
-                                               const char * aTemporaryValueName ))
+	^ self ffiCall: #(LLVMValue LLVMBuildAdd(self,
+                                            LLVMValue 	 aValue,
+                                            LLVMValue 	 anotherValue,
+                                            const char * aTemporaryValueName ))
 
 ]
 
@@ -31,6 +37,12 @@ LLVMBuilder >> buildReturnStatementFromValue: aValue [
 LLVMBuilder >> dispose [
 
 	self ffiCall: #(void LLVMDisposeBuilder(LLVMBuilderRef  aBuilder))
+]
+
+{ #category : #finalization }
+LLVMBuilder >> ffiLibrary [
+
+	^ self class ffiLibrary
 ]
 
 { #category : #finalization }

@@ -23,14 +23,15 @@ LLVMTarget class >> ffiLibrary [
 { #category : #accessing }
 LLVMTarget class >> firstTarget [
 
-	self ffiCall: #(LLVMTarget LLVMGetFirstTarget(void))
+	^ self ffiCall: #(LLVMTarget LLVMGetFirstTarget(void))
 ]
 
 { #category : #accessing }
 LLVMTarget class >> getTargetIn: targetHolder fromTriple: triple errorMessage: errorHolder [
 
-	self ffiCall: #(Boolean LLVMGetTargetFromTriple(const char* triple, LLVMTarget *targetHolder,
-                                 char **errorHolder))
+	^ self ffiCall: #(Boolean LLVMGetTargetFromTriple(const char* triple,
+	                                                  LLVMTarget *targetHolder,
+                                                     char **errorHolder))
 ]
 
 { #category : #accessing }

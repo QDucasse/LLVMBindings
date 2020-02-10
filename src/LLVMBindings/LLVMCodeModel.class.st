@@ -2,13 +2,13 @@ Class {
 	#name : #LLVMCodeModel,
 	#superclass : #FFIEnumeration,
 	#classVars : [
-		'LLVMCodeModelDefault',
-		'LLVMCodeModelJITDefault',
-		'LLVMCodeModelKernel',
-		'LLVMCodeModelLarge',
-		'LLVMCodeModelMedium',
-		'LLVMCodeModelSmall',
-		'LLVMCodeModelTiny'
+		'llvmCodeModelDefault',
+		'llvmCodeModelJITDefault',
+		'llvmCodeModelKernel',
+		'llvmCodeModelLarge',
+		'llvmCodeModelMedium',
+		'llvmCodeModelSmall',
+		'llvmCodeModelTiny'
 	],
 	#category : #'LLVMBindings-Enumeration'
 }
@@ -17,12 +17,12 @@ Class {
 LLVMCodeModel class >> enumDecl [
 
 	^ #(
-	LLVMCodeModelDefault    0
-	LLVMCodeModelJITDefault 1
-	LLVMCodeModelTiny       2
-	LLVMCodeModelSmall      3
-	LLVMCodeModelKernel     4 
-   LLVMCodeModelMedium     5
-	LLVMCodeModelLarge      6
+	llvmodeModelDefault     0
+	llvmCodeModelJITDefault 1
+	llvmCodeModelTiny       2
+	llvmCodeModelSmall      3
+	llvmCodeModelKernel     4 
+   llvmCodeModelMedium     5
+	llvmCodeModelLarge      6
 	)
 ]

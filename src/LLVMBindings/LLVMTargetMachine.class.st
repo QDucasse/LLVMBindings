@@ -1,6 +1,12 @@
 Class {
 	#name : #LLVMTargetMachine,
 	#superclass : #FFIExternalObject,
+	#pools : [
+		'LLVMCodeGenFileType',
+		'LLVMCodeGenOptLevel',
+		'LLVMCodeModel',
+		'LLVMRelocMode'
+	],
 	#category : #'LLVMBindings-Target'
 }
 

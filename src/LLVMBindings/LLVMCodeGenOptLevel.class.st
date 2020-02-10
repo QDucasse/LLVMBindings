@@ -2,10 +2,10 @@ Class {
 	#name : #LLVMCodeGenOptLevel,
 	#superclass : #FFIEnumeration,
 	#classVars : [
-		'LLVMCodeGenLevelAggressive',
-		'LLVMCodeGenLevelDefault',
-		'LLVMCodeGenLevelLess',
-		'LLVMCodeGenLevelNone'
+		'llvmCodeGenLevelAggressive',
+		'llvmCodeGenLevelDefault',
+		'llvmCodeGenLevelLess',
+		'llvmCodeGenLevelNone'
 	],
 	#category : #'LLVMBindings-Enumeration'
 }
@@ -14,10 +14,10 @@ Class {
 LLVMCodeGenOptLevel class >> enumDecl [ 
 
 	^ #(
-	LLVMCodeGenLevelNone       0
-	LLVMCodeGenLevelLess       1
-	LLVMCodeGenLevelDefault    2
-	LLVMCodeGenLevelAggressive 3 
+	llvmCodeGenLevelNone       0
+	llvmCodeGenLevelLess       1
+	llvmCodeGenLevelDefault    2
+	llvmCodeGenLevelAggressive 3 
 	)
 	
 
