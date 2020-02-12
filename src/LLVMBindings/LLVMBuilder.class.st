@@ -19,7 +19,7 @@ LLVMBuilder class >> new [
 { #category : #building }
 LLVMBuilder >> buildAdd: aValue to: anotherValue andStoreUnder: aTemporaryValueName [
 
-	^ self ffiCall: #(LLVMValue LLVMBuildAdd(self,
+	^ self ffiCall: #(LLVMValue LLVMBuildAdd(LLVMBuilder self,
                                             LLVMValue 	 aValue,
                                             LLVMValue 	 anotherValue,
                                             const char * aTemporaryValueName ))
@@ -29,14 +29,14 @@ LLVMBuilder >> buildAdd: aValue to: anotherValue andStoreUnder: aTemporaryValueN
 { #category : #building }
 LLVMBuilder >> buildReturnStatementFromValue: aValue [ 
 
-	^ self ffiCall: #(LLVMValue LLVMBuildRet(self,
+	^ self ffiCall: #(LLVMValue LLVMBuildRet(LLVMBuilder self,
 														 LLVMValue aValue))
 ]
 
 { #category : #finalization }
 LLVMBuilder >> dispose [
 
-	self ffiCall: #(void LLVMDisposeBuilder(LLVMBuilderRef  aBuilder))
+	self ffiCall: #(void LLVMDisposeBuilder(LLVMBuilder self))
 ]
 
 { #category : #finalization }
@@ -54,21 +54,21 @@ LLVMBuilder >> finalize [
 { #category : #positioning }
 LLVMBuilder >> positionBuilderAtEndOfBasicBlock: aBasicBlock [
 
-	^ self ffiCall: #(void LLVMPositionBuilderAtEnd(self,
+	^ self ffiCall: #(void LLVMPositionBuilderAtEnd(LLVMBuilder self,
 														   		  LLVMBasicBlock aBasicBlock))
 ]
 
 { #category : #positioning }
 LLVMBuilder >> positionBuilderBeforeInstruction: anInstruction [
 
-	^ self ffiCall: #(void LLVMPositionBuilderBefore(self,
+	^ self ffiCall: #(void LLVMPositionBuilderBefore(LLVMBuilder self,
 														   		   LLVMInstruction anInstruction))
 ]
 
 { #category : #positioning }
 LLVMBuilder >> positionBuilderOnInstruction: anInstruction inBasicBlock: aBasicBlock [
 
-	^ self ffiCall: #(void LLVMPositionBuilder(self,
-														   LLVMBasicBlock aBasicBlock,
+	^ self ffiCall: #(void LLVMPositionBuilder(LLVMBuilder     self,
+														   LLVMBasicBlock  aBasicBlock, 
 															LLVMInstruction anInstruction))
 ]

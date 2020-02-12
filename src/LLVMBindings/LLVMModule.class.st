@@ -26,20 +26,20 @@ LLVMModule class >> withName: aName [
 { #category : #finalization }
 LLVMModule >> dispose [
 
-	self ffiCall: #(void LLVMDisposeModule(self))
+	self ffiCall: #(void LLVMDisposeModule(LLVMModule self))
 ]
 
 { #category : #finalization }
 LLVMModule >> emitBitCodeToMemoryBuffer [
 
-	^ self ffiCall: #(LLVMMemoryBuffer LLVMWriteBitcodeToMemoryBuffer(self))
+	^ self ffiCall: #(LLVMMemoryBuffer LLVMWriteBitcodeToMemoryBuffer(LLVMModule self))
 ]
 
 { #category : #finalization }
 LLVMModule >> emitTargetMachineCode: aTargetMachine toMemoryBuffer: aMemBufferPtr withFileType: aCodeFileType withError: anErrorHolder [
 
 	^ self ffiCall: #(Boolean LLVMTargetMachineEmitToMemoryBuffer(LLVMTargetMachine aTargetMachine,
-																					 self,
+																					 LLVMModule self,
 																					 LLVMCodeGenFileType aCodeFileType,
 																					 char** anErrorHolder,
 																					 LLVMMemoryBuffer* aMemBufferPtr))
@@ -54,11 +54,11 @@ LLVMModule >> ffiLibrary [
 { #category : #finalization }
 LLVMModule >> finalize [ 
 
-	^ self dispose
+	self dispose
 ]
 
 { #category : #finalization }
 LLVMModule >> target [
 
-	self ffiCall: #(const char *LLVMGetTarget(self))
+	^ self ffiCall: #(const char *LLVMGetTarget(LLVMModule self))
 ]

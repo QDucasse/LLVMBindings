@@ -20,25 +20,25 @@ LLVMFunctionSignature >> addToModule: aModule withName: aName [
 
 "Output a value"
 
-	^ self ffiCall: #(LLVMFunction LLVMAddFunction(LLVMModule aModule, 
-	                                               String aName, 
-	        											       self))
+	^ self ffiCall: #(LLVMFunction LLVMAddFunction(LLVMModule            aModule, 
+	                                               String                aName, 
+	        											       LLVMFunctionSignature self))
 ]
 
 { #category : #adding }
 LLVMFunctionSignature >> isVaridic [
 
-	^ self ffiCall: #(Boolean LLVMIsFunctionVarArg(self))
+	^ self ffiCall: #(Boolean LLVMIsFunctionVarArg(LLVMFunctionSignature self))
 ]
 
 { #category : #adding }
 LLVMFunctionSignature >> parametersNumber [
 
-	^ self ffiCall: #(uint LLVMCountParamTypes(self))
+	^ self ffiCall: #(uint LLVMCountParamTypes(LLVMFunctionSignature self))
 ]
 
 { #category : #adding }
 LLVMFunctionSignature >> returnType [
 
-	^ self ffiCall: #(LLVMType LLVMGetReturnType(self))
+	^ self ffiCall: #(LLVMType LLVMGetReturnType(LLVMFunctionSignature self))
 ]

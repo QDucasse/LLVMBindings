@@ -5,6 +5,12 @@ Class {
 }
 
 { #category : #linking }
+LLVMBasicBlock class >> ffiLibrary [
+
+	^ 'libLLVM.dylib' asFFILibrary
+]
+
+{ #category : #linking }
 LLVMBasicBlock class >> linkToFunction: aFunctionValue withName: aName [
 
 	^ self ffiCall: #(LLVMBasicBlock LLVMAppendBasicBlock(LLVMValue aFunctionValue, 
@@ -14,17 +20,23 @@ LLVMBasicBlock class >> linkToFunction: aFunctionValue withName: aName [
 { #category : #accessing }
 LLVMBasicBlock >> delete [ 
 
-	self ffiCall: #(void LLVMDeleteBasicBlock())
+	self ffiCall: #(void LLVMDeleteBasicBlock(LLVMBasicBlock self))
+]
+
+{ #category : #accessing }
+LLVMBasicBlock >> ffiLibrary [
+
+	^ self class ffiLibrary
 ]
 
 { #category : #accessing }
 LLVMBasicBlock >> name [ 
 
-	^ self ffiCall: #(const char* LLVMGetBasicBlockName(self))
+	^ self ffiCall: #(const char* LLVMGetBasicBlockName(LLVMBasicBlock self))
 ]
 
 { #category : #accessing }
 LLVMBasicBlock >> parent [ 
 
-	^ self ffiCall: #(LLVMValue LLVMGetBasicBlockParent(self))
+	^ self ffiCall: #(LLVMValue LLVMGetBasicBlockParent(LLVMBasicBlock self))
 ]

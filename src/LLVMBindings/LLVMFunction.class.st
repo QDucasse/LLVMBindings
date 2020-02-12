@@ -7,35 +7,35 @@ Class {
 { #category : #adding }
 LLVMFunction >> firstParameter [
 
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetFirstParam(self))
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetFirstParam(LLVMFunction self))
 ]
 
 { #category : #adding }
 LLVMFunction >> lastParameter [
 
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetLastParam(self))
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetLastParam(LLVMFunction self))
 ]
 
 { #category : #adding }
 LLVMFunction >> nextParameterOf: aParameter [
 
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetNextParam(self))
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetNextParam(LLVMFunction self))
 ]
 
 { #category : #adding }
 LLVMFunction >> parameterAtIndex: anInteger [
 
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetParam(self, uint anInteger))
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetParam(LLVMFunction self, uint anInteger))
 ]
 
 { #category : #adding }
 LLVMFunction >> parametersNumber [
 
-	^ self ffiCall: #(uint LLVMCountParams(self))
+	^ self ffiCall: #(uint LLVMCountParams(LLVMFunction self))
 ]
 
 { #category : #adding }
 LLVMFunction >> previousParameterOf: aParameter [
 
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetPreviousParam(self))
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetPreviousParam(LLVMFunction self))
 ]
