@@ -8,7 +8,8 @@ Class {
 		'llvmCodeModelLarge',
 		'llvmCodeModelMedium',
 		'llvmCodeModelSmall',
-		'llvmCodeModelTiny'
+		'llvmCodeModelTiny',
+		'llvmodeModelDefault'
 	],
 	#category : #'LLVMBindings-Enumeration'
 }

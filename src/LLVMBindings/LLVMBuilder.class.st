@@ -13,7 +13,7 @@ LLVMBuilder class >> ffiLibrary [
 { #category : #'instance creation' }
 LLVMBuilder class >> new [
 
-	^ self ffiCall: #(LLVMBuilder LLVMCreateBuilder())
+	^ self ffiCall: #(LLVMBuilder LLVMCreateBuilder(void))
 ]
 
 { #category : #building }

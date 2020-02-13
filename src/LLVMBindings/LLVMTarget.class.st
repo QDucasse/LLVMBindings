@@ -136,7 +136,7 @@ LLVMTarget class >> initializeX86TargetMC [
 { #category : #accessing }
 LLVMTarget >> description [
 
-	self ffiCall: #(const char *LLVMGetTargetDescription(self))
+	^ self ffiCall: #(const char *LLVMGetTargetDescription(LLVMTarget self))
 ]
 
 { #category : #resources }
@@ -148,11 +148,11 @@ LLVMTarget >> ffiLibrary [
 { #category : #accessing }
 LLVMTarget >> name [
 
-	self ffiCall: #(const char *LLVMGetTargetName(self))
+	^ self ffiCall: #(const char *LLVMGetTargetName(LLVMTarget self))
 ]
 
 { #category : #accessing }
 LLVMTarget >> next [
 
-	self ffiCall: #(LLVMTarget LLVMGetNextTarget(self))
+	^ self ffiCall: #(LLVMTarget LLVMGetNextTarget(LLVMTarget self))
 ]

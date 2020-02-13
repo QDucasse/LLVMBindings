@@ -19,7 +19,7 @@ LLVMTargetMachine class >> ffiLibrary [
 { #category : #'instance creation' }
 LLVMTargetMachine class >> fromTarget: aTarget withTriple: aTripleString withCPU: aCPUString withFeatures: aFeaturesString withOptLevel: anOptimizationLevel withRelocMode: aRelocMode andCodeModel: aCodeModel [
 
-	self ffiCall: #(LLVMTargetMachine LLVMCreateTargetMachine(LLVMTarget aTarget,
+	^ self ffiCall: #(LLVMTargetMachine LLVMCreateTargetMachine(LLVMTarget aTarget,
 										              String 	              aTripleString,
                                              String 	              aCPUString,
 														  String 	              aFeaturesString,
@@ -31,20 +31,20 @@ LLVMTargetMachine class >> fromTarget: aTarget withTriple: aTripleString withCPU
 { #category : #resources }
 LLVMTargetMachine >> cpu [ 
 
-	^ self ffiCall: #(String LLVMGetTargetMachineCPU(self))
+	^ self ffiCall: #(String LLVMGetTargetMachineCPU(LLVMTargetMachine self))
 ]
 
 { #category : #resources }
 LLVMTargetMachine >> dispose [
 
 
-	self ffiCall: #(vois LLVMDisposeTargetMachine(self))
+	self ffiCall: #(vois LLVMDisposeTargetMachine(LLVMTargetMachine self))
 ]
 
 { #category : #resources }
 LLVMTargetMachine >> featureString [
 
-	^ self ffiCall: #(String LLVMGetTargetMachineFeatureString(self))
+	^ self ffiCall: #(String LLVMGetTargetMachineFeatureString(LLVMTargetMachine self))
 ]
 
 { #category : #resources }
@@ -62,11 +62,11 @@ LLVMTargetMachine >> finalize [
 { #category : #resources }
 LLVMTargetMachine >> target [
 
-	^ self ffiCall: #(String LLVMGetTargetMachineTarget(self))
+	^ self ffiCall: #(String LLVMGetTargetMachineTarget(LLVMTargetMachine self))
 ]
 
 { #category : #resources }
 LLVMTargetMachine >> triple [
 
-	^ self ffiCall: #(String LLVMGetTargetMachineTriple(self))
+	^ self ffiCall: #(String LLVMGetTargetMachineTriple(LLVMTargetMachine self))
 ]

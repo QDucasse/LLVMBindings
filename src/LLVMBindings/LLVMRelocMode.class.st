@@ -2,13 +2,6 @@ Class {
 	#name : #LLVMRelocMode,
 	#superclass : #FFIEnumeration,
 	#classVars : [
-		'LLVMRelocDefault',
-		'LLVMRelocDynamicNoPic',
-		'LLVMRelocPIC',
-		'LLVMRelocROPI',
-		'LLVMRelocROPI_RWPI',
-		'LLVMRelocRWPI',
-		'LLVMRelocStatic',
 		'llvmRelocDefault',
 		'llvmRelocDynamicNoPic',
 		'llvmRelocPIC',
