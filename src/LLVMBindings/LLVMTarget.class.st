@@ -11,6 +11,10 @@ LLVMTarget initializeARM64.
 Class {
 	#name : #LLVMTarget,
 	#superclass : #FFIExternalObject,
+	#classVars : [
+		'LLVMTarget_PTR',
+		'String_PTR'
+	],
 	#category : #'LLVMBindings-Target'
 }
 
@@ -27,16 +31,38 @@ LLVMTarget class >> firstTarget [
 ]
 
 { #category : #accessing }
+LLVMTarget class >> getTargetFromTriple: triple [
+    | targetHolder errorHolder haveError |
+
+    targetHolder := LLVMTarget_PTR new.
+    errorHolder := String_PTR new.
+
+    "Returns 0 (false) on sucess"
+    haveError := LLVMTarget getTargetIn: targetHolder fromTriple: triple errorMessage: errorHolder.
+    haveError ifTrue: [ self error: errorHolder value ].
+   
+    ^ LLVMTarget fromHandle: targetHolder value.
+]
+
+{ #category : #accessing }
 LLVMTarget class >> getTargetIn: targetHolder fromTriple: triple errorMessage: errorHolder [
 
-	^ self ffiCall: #(Boolean LLVMGetTargetFromTriple(const char* triple,
-	                                                  LLVMTarget *targetHolder,
-                                                     char **errorHolder))
+    ^ self ffiCall: #(Boolean LLVMGetTargetFromTriple(const char* triple,
+                                                      LLVMTarget_PTR targetHolder,
+                                                      String_PTR errorHolder))
+]
+
+{ #category : #accessing }
+LLVMTarget class >> initialize [
+   
+    LLVMTarget_PTR := FFIExternalValueHolder ofType: 'LLVMTarget'.
+    String_PTR := FFIExternalValueHolder ofType: 'String'.
 ]
 
 { #category : #accessing }
 LLVMTarget class >> initializeAArch64 [
 
+	self initialize.
 	self initializeAArch64Target.
 	self initializeAArch64TargetInfo.
 	self initializeAArch64TargetMC.
@@ -70,6 +96,7 @@ LLVMTarget class >> initializeAArch64TargetMC [
 { #category : #accessing }
 LLVMTarget class >> initializeARM [
 
+	self initialize.
 	self initializeARMTarget.
 	self initializeARMTargetInfo.
 	self initializeARMTargetMC.
@@ -103,6 +130,7 @@ LLVMTarget class >> initializeARMTargetMC [
 { #category : #accessing }
 LLVMTarget class >> initializeX86 [
 
+	self initialize.
 	self initializeX86Target.
 	self initializeX86TargetInfo.
 	self initializeX86TargetMC.

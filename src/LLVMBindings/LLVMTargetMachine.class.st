@@ -17,6 +17,13 @@ LLVMTargetMachine class >> ffiLibrary [
 ]
 
 { #category : #'instance creation' }
+LLVMTargetMachine class >> fromTarget: aTarget withTriple: aTripleString [ 
+
+	^ LLVMTargetMachine fromTarget: aTarget withTriple: aTripleString withCPU: '' withFeatures: '' withOptLevel: llvmCodeGenLevelDefault withRelocMode: llvmRelocDefault andCodeModel: llvmCodeModelDefault
+
+]
+
+{ #category : #'instance creation' }
 LLVMTargetMachine class >> fromTarget: aTarget withTriple: aTripleString withCPU: aCPUString withFeatures: aFeaturesString withOptLevel: anOptimizationLevel withRelocMode: aRelocMode andCodeModel: aCodeModel [
 
 	^ self ffiCall: #(LLVMTargetMachine LLVMCreateTargetMachine(LLVMTarget aTarget,

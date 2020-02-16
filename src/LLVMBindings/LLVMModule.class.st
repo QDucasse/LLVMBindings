@@ -8,6 +8,13 @@ See my class side for initialization methods.
 Class {
 	#name : #LLVMModule,
 	#superclass : #FFIExternalObject,
+	#classVars : [
+		'LLVMMemBuffer_PTR',
+		'String_PTR'
+	],
+	#pools : [
+		'LLVMCodeGenFileType'
+	],
 	#category : #'LLVMBindings-Core'
 }
 
@@ -18,8 +25,16 @@ LLVMModule class >> ffiLibrary [
 ]
 
 { #category : #'instance creation' }
+LLVMModule class >> initialize [
+
+	String_PTR := FFIExternalValueHolder ofType: 'String'.
+	LLVMMemBuffer_PTR := FFIExternalValueHolder ofType: 'LLVMMemoryBuffer'.
+]
+
+{ #category : #'instance creation' }
 LLVMModule class >> withName: aName [
 
+	self initialize.
 	^ self ffiCall: #(LLVMModule LLVMModuleCreateWithName(String aName))
 ]
 
@@ -30,19 +45,48 @@ LLVMModule >> dispose [
 ]
 
 { #category : #finalization }
+LLVMModule >> emitASMFromTargetMachine: aTargetMachine [
+
+	^ self emitCodeFromTargetMachine: aTargetMachine withFileType: llvmAssemblyFile 
+
+]
+
+{ #category : #finalization }
 LLVMModule >> emitBitCodeToMemoryBuffer [
 
 	^ self ffiCall: #(LLVMMemoryBuffer LLVMWriteBitcodeToMemoryBuffer(LLVMModule self))
 ]
 
 { #category : #finalization }
-LLVMModule >> emitTargetMachineCode: aTargetMachine toMemoryBuffer: aMemBufferPtr withFileType: aCodeFileType withError: anErrorHolder [
+LLVMModule >> emitCodeFromTargetMachine: aTargetMachine toMemoryBuffer: aMemBufferPtr withFileType: aCodeFileType withError: anErrorHolder [
 
 	^ self ffiCall: #(Boolean LLVMTargetMachineEmitToMemoryBuffer(LLVMTargetMachine aTargetMachine,
 																					 LLVMModule self,
 																					 LLVMCodeGenFileType aCodeFileType,
-																					 char** anErrorHolder,
-																					 LLVMMemoryBuffer* aMemBufferPtr))
+																					 String_PTR anErrorHolder,
+																					 LLVMMemBuffer_PTR aMemBufferPtr))
+]
+
+{ #category : #finalization }
+LLVMModule >> emitCodeFromTargetMachine: aTargetMachine withFileType: aCodeFileType [ 
+
+	| memBufferHolder errorHolder haveError |
+
+    memBufferHolder := LLVMMemBuffer_PTR new.
+    errorHolder := String_PTR new.
+
+	"Returns 0 (false) on sucess"
+    haveError := self emitCodeFromTargetMachine: aTargetMachine toMemoryBuffer: memBufferHolder withFileType: aCodeFileType withError: errorHolder.
+    haveError ifTrue: [ self error: errorHolder value ].
+   
+    ^ LLVMMemoryBuffer fromHandle: memBufferHolder value.
+]
+
+{ #category : #finalization }
+LLVMModule >> emitObjFromTargetMachine: aTargetMachine [
+
+	^ self emitCodeFromTargetMachine: aTargetMachine withFileType: llvmObjectFile 
+
 ]
 
 { #category : #finalization }
