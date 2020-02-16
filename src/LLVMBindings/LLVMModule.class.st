@@ -70,14 +70,14 @@ LLVMModule >> emitCodeFromTargetMachine: aTargetMachine toMemoryBuffer: aMemBuff
 { #category : #finalization }
 LLVMModule >> emitCodeFromTargetMachine: aTargetMachine withFileType: aCodeFileType [ 
 
-	| memBufferHolder errorHolder haveError |
+	| memBufferHolder errorHolder hasError |
 
     memBufferHolder := LLVMMemBuffer_PTR new.
     errorHolder := String_PTR new.
 
-	"Returns 0 (false) on sucess"
-    haveError := self emitCodeFromTargetMachine: aTargetMachine toMemoryBuffer: memBufferHolder withFileType: aCodeFileType withError: errorHolder.
-    haveError ifTrue: [ self error: errorHolder value ].
+	"Returns 0 (false) on success"
+    hasError := self emitCodeFromTargetMachine: aTargetMachine toMemoryBuffer: memBufferHolder withFileType: aCodeFileType withError: errorHolder.
+    hasError ifTrue: [ self error: errorHolder value ].
    
     ^ LLVMMemoryBuffer fromHandle: memBufferHolder value.
 ]

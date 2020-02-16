@@ -32,14 +32,14 @@ LLVMTarget class >> firstTarget [
 
 { #category : #accessing }
 LLVMTarget class >> getTargetFromTriple: triple [
-    | targetHolder errorHolder haveError |
+    | targetHolder errorHolder hasError |
 
     targetHolder := LLVMTarget_PTR new.
     errorHolder := String_PTR new.
 
-    "Returns 0 (false) on sucess"
-    haveError := LLVMTarget getTargetIn: targetHolder fromTriple: triple errorMessage: errorHolder.
-    haveError ifTrue: [ self error: errorHolder value ].
+    "Returns 0 (false) on success"
+    hasError := LLVMTarget getTargetIn: targetHolder fromTriple: triple errorMessage: errorHolder.
+    hasError ifTrue: [ self error: errorHolder value ].
    
     ^ LLVMTarget fromHandle: targetHolder value.
 ]

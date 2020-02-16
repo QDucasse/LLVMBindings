@@ -2,7 +2,6 @@ Class {
 	#name : #LLVMTargetMachine,
 	#superclass : #FFIExternalObject,
 	#pools : [
-		'LLVMCodeGenFileType',
 		'LLVMCodeGenOptLevel',
 		'LLVMCodeModel',
 		'LLVMRelocMode'
@@ -44,8 +43,7 @@ LLVMTargetMachine >> cpu [
 { #category : #resources }
 LLVMTargetMachine >> dispose [
 
-
-	self ffiCall: #(vois LLVMDisposeTargetMachine(LLVMTargetMachine self))
+	self ffiCall: #(void LLVMDisposeTargetMachine(LLVMTargetMachine self))
 ]
 
 { #category : #resources }
@@ -69,7 +67,7 @@ LLVMTargetMachine >> finalize [
 { #category : #resources }
 LLVMTargetMachine >> target [
 
-	^ self ffiCall: #(String LLVMGetTargetMachineTarget(LLVMTargetMachine self))
+	^ self ffiCall: #(LLVMTarget LLVMGetTargetMachineTarget(LLVMTargetMachine self))
 ]
 
 { #category : #resources }
