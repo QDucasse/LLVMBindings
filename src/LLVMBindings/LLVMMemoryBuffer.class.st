@@ -15,3 +15,9 @@ LLVMMemoryBuffer >> ffiLibrary [
 
 	^ self class ffiLibrary
 ]
+
+{ #category : #resources }
+LLVMMemoryBuffer >> start [
+
+	^ self ffiCall: #(String LLVMGetBufferStart(LLVMMemoryBuffer self))
+]

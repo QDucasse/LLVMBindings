@@ -67,12 +67,19 @@ LLVMTarget class >> initializeAArch64 [
 	self initializeAArch64TargetInfo.
 	self initializeAArch64TargetMC.
 	self initializeAArch64AsmPrinter.
+	self initializeAArch64Disassembler.
 ]
 
 { #category : #accessing }
 LLVMTarget class >> initializeAArch64AsmPrinter [
 
 	self ffiCall: #(void LLVMInitializeAArch64AsmPrinter())
+]
+
+{ #category : #accessing }
+LLVMTarget class >> initializeAArch64Disassembler [
+
+	self ffiCall: #(void LLVMInitializeAArch64Disassembler())
 ]
 
 { #category : #accessing }
@@ -101,12 +108,19 @@ LLVMTarget class >> initializeARM [
 	self initializeARMTargetInfo.
 	self initializeARMTargetMC.
 	self initializeARMAsmPrinter.
+	self initializeARMDisassembler.
 ]
 
 { #category : #accessing }
 LLVMTarget class >> initializeARMAsmPrinter [
 
 	self ffiCall: #(void LLVMInitializeARMAsmPrinter())
+]
+
+{ #category : #accessing }
+LLVMTarget class >> initializeARMDisassembler [
+
+	self ffiCall: #(void LLVMInitializeARMDisassembler())
 ]
 
 { #category : #accessing }
@@ -135,12 +149,19 @@ LLVMTarget class >> initializeX86 [
 	self initializeX86TargetInfo.
 	self initializeX86TargetMC.
 	self initializeX86AsmPrinter.
+	self initializeX86Disassembler.
 ]
 
 { #category : #accessing }
 LLVMTarget class >> initializeX86AsmPrinter [
 
 	self ffiCall: #(void LLVMInitializeX86AsmPrinter())
+]
+
+{ #category : #accessing }
+LLVMTarget class >> initializeX86Disassembler [
+
+	self ffiCall: #(void LLVMInitializeX86Disassembler())
 ]
 
 { #category : #accessing }
