@@ -36,7 +36,7 @@ LLVMValue >> getNameWithSize: anInteger [
 { #category : #accessing }
 LLVMValue >> name [ 
 
-	^ self getNameWithSize: 8
+	^ self getNameWithSize: 16
 ]
 
 { #category : #accessing }
