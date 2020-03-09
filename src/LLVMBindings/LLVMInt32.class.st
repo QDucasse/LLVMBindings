@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-LLVMInt32 class >> new [
+LLVMInt32 class >> create [
 
 	^ self ffiCall: #(LLVMInt32 LLVMInt32Type(void))
 ]

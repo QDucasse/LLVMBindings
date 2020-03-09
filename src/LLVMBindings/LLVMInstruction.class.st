@@ -1,6 +1,10 @@
 Class {
 	#name : #LLVMInstruction,
 	#superclass : #LLVMValue,
+	#instVars : [
+		'assembly',
+		'size'
+	],
 	#category : #'LLVMBindings-Core'
 }
 

@@ -106,3 +106,9 @@ LLVMModule >> target [
 
 	^ self ffiCall: #(const char *LLVMGetTarget(LLVMModule self))
 ]
+
+{ #category : #finalization }
+LLVMModule >> target: aTriple [
+
+	self ffiCall: #(void LLVMSetTarget(LLVMModule self, String aTriple))
+]

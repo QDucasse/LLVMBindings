@@ -1,11 +1,11 @@
 Class {
-	#name : #LLVMDisassemblerTests,
+	#name : #LLVMDisassemblerTest,
 	#superclass : #TestCase,
 	#category : #'LLVMBindings-Tests'
 }
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleAddressReturnsDecimalImmediateAddress [
+LLVMDisassemblerTest >> testDisassembleAddressReturnsDecimalImmediateAddress [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -18,7 +18,7 @@ LLVMDisassemblerTests >> testDisassembleAddressReturnsDecimalImmediateAddress [
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleAddressWithHexaOptionReturnsHexalImmediateAddress [
+LLVMDisassemblerTest >> testDisassembleAddressWithHexaOptionReturnsHexalImmediateAddress [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -32,7 +32,7 @@ LLVMDisassemblerTests >> testDisassembleAddressWithHexaOptionReturnsHexalImmedia
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleImmediateReturnsDecimalStringByDefault [
+LLVMDisassemblerTest >> testDisassembleImmediateReturnsDecimalStringByDefault [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -42,7 +42,7 @@ LLVMDisassemblerTests >> testDisassembleImmediateReturnsDecimalStringByDefault [
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleImmediateWithHexaOptionsReturnsHexaString [
+LLVMDisassemblerTest >> testDisassembleImmediateWithHexaOptionsReturnsHexaString [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -53,7 +53,7 @@ LLVMDisassemblerTests >> testDisassembleImmediateWithHexaOptionsReturnsHexaStrin
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleIndexedAddressReturnsDecimalIndirectAddress [
+LLVMDisassemblerTest >> testDisassembleIndexedAddressReturnsDecimalIndirectAddress [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -66,7 +66,7 @@ LLVMDisassemblerTests >> testDisassembleIndexedAddressReturnsDecimalIndirectAddr
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleIndexedAddressWithHexaOptionReturnsHexaIndirectAddress [
+LLVMDisassemblerTest >> testDisassembleIndexedAddressWithHexaOptionReturnsHexaIndirectAddress [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -80,7 +80,7 @@ LLVMDisassemblerTests >> testDisassembleIndexedAddressWithHexaOptionReturnsHexaI
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleInvalidInstructionRaisesException [
+LLVMDisassemblerTest >> testDisassembleInvalidInstructionRaisesException [
 
 	| dis |
 	dis := LLVMDisassembler i386.
@@ -90,7 +90,7 @@ LLVMDisassemblerTests >> testDisassembleInvalidInstructionRaisesException [
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleReturnsInstructionSize [
+LLVMDisassemblerTest >> testDisassembleReturnsInstructionSize [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -100,7 +100,7 @@ LLVMDisassemblerTests >> testDisassembleReturnsInstructionSize [
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleReturnsInstructionString [
+LLVMDisassemblerTest >> testDisassembleReturnsInstructionString [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -110,7 +110,7 @@ LLVMDisassemblerTests >> testDisassembleReturnsInstructionString [
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressReturnsDecimalScaledAddress [
+LLVMDisassemblerTest >> testDisassembleScaledIndexedAddressReturnsDecimalScaledAddress [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -122,7 +122,7 @@ LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressReturnsDecimalScaled
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressWithAlternativePrinterVariantReturnsAddressInTermsOfCalculation [
+LLVMDisassemblerTest >> testDisassembleScaledIndexedAddressWithAlternativePrinterVariantReturnsAddressInTermsOfCalculation [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -135,7 +135,7 @@ LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressWithAlternativePrint
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressWithOffsetAndAlternativePrinterVariantReturnsAddressInTermsOfCalculation [
+LLVMDisassemblerTest >> testDisassembleScaledIndexedAddressWithOffsetAndAlternativePrinterVariantReturnsAddressInTermsOfCalculation [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -148,7 +148,7 @@ LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressWithOffsetAndAlterna
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressWithOffsetReturnsDecimalScaledAddress [
+LLVMDisassemblerTest >> testDisassembleScaledIndexedAddressWithOffsetReturnsDecimalScaledAddress [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -160,7 +160,7 @@ LLVMDisassemblerTests >> testDisassembleScaledIndexedAddressWithOffsetReturnsDec
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testDisassembleWithAlternatePrinterVariantReturnsAlternateInstructionString [
+LLVMDisassemblerTest >> testDisassembleWithAlternatePrinterVariantReturnsAlternateInstructionString [
 
 	| dis instruction |
 	dis := LLVMDisassembler i386.
@@ -171,7 +171,7 @@ LLVMDisassemblerTests >> testDisassembleWithAlternatePrinterVariantReturnsAltern
 ]
 
 { #category : #tests }
-LLVMDisassemblerTests >> testInvalidInstructionErrorContainsInvalidOpcode [
+LLVMDisassemblerTest >> testInvalidInstructionErrorContainsInvalidOpcode [
 
 	| dis |
 	dis := LLVMDisassembler i386.

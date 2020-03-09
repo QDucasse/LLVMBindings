@@ -26,3 +26,21 @@ LLVMValue >> ffiLibrary [
 
 	^ self class ffiLibrary
 ]
+
+{ #category : #accessing }
+LLVMValue >> getNameWithSize: anInteger [ 
+
+	^ self ffiCall: #(String LLVMGetValueName2(LLVMValue self, size_t* anInteger))
+]
+
+{ #category : #accessing }
+LLVMValue >> name [ 
+
+	^ self getNameWithSize: 8
+]
+
+{ #category : #accessing }
+LLVMValue >> type [ 
+
+	^ self ffiCall: #(LLVMType LLVMTypeOf(LLVMValue self))
+]

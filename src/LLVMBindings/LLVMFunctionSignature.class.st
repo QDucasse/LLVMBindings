@@ -9,10 +9,10 @@ LLVMFunctionSignature class >> withReturnType: aType parametersVector: anArray a
 
 "Output a function type consisting of a specified signature"
 
-^ self ffiCall: #(#LLVMFunctionSignature LLVMFunctionType(LLVMType aType, 
-															            LLVMParameterArray anArray, 
-															            int anInteger, 
-															            Boolean aBoolean))
+^ self ffiCall: #(LLVMFunctionSignature LLVMFunctionType(LLVMType aType, 
+															           LLVMParameterArray anArray, 
+															           int anInteger, 
+															           Boolean aBoolean))
 ]
 
 { #category : #adding }

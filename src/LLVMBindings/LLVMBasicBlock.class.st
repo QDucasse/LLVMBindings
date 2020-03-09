@@ -5,16 +5,23 @@ Class {
 }
 
 { #category : #linking }
-LLVMBasicBlock class >> ffiLibrary [
-
-	^ 'libLLVM.dylib' asFFILibrary
-]
-
-{ #category : #linking }
-LLVMBasicBlock class >> linkToFunction: aFunctionValue withName: aName [
+LLVMBasicBlock class >> appendToFunction: aFunctionValue withName: aName [
 
 	^ self ffiCall: #(LLVMBasicBlock LLVMAppendBasicBlock(LLVMValue aFunctionValue, 
 																		  String aName))
+]
+
+{ #category : #linking }
+LLVMBasicBlock class >> createInContext: anLLVMContext withName: aName [
+
+	^ self ffiCall: #(LLVMBasicBlock LLVMCreateBasicBlockInContext(LLVMContext anLLVMContext,
+                                                                  String aName	))
+]
+
+{ #category : #linking }
+LLVMBasicBlock class >> ffiLibrary [
+
+	^ 'libLLVM.dylib' asFFILibrary
 ]
 
 { #category : #accessing }

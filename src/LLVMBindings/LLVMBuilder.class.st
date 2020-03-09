@@ -5,15 +5,15 @@ Class {
 }
 
 { #category : #'instance creation' }
-LLVMBuilder class >> ffiLibrary [
-
-	^ 'libLLVM.dylib' asFFILibrary
+LLVMBuilder class >> create [
+	
+	^ self ffiCall: #(LLVMBuilder LLVMCreateBuilder(void))
 ]
 
 { #category : #'instance creation' }
-LLVMBuilder class >> new [
+LLVMBuilder class >> ffiLibrary [
 
-	^ self ffiCall: #(LLVMBuilder LLVMCreateBuilder(void))
+	^ 'libLLVM.dylib' asFFILibrary
 ]
 
 { #category : #building }
@@ -23,7 +23,6 @@ LLVMBuilder >> buildAdd: aValue to: anotherValue andStoreUnder: aTemporaryValueN
                                             LLVMValue 	 aValue,
                                             LLVMValue 	 anotherValue,
                                             const char * aTemporaryValueName ))
-
 ]
 
 { #category : #building }
