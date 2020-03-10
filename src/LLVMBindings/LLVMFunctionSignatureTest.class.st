@@ -13,9 +13,9 @@ Class {
 LLVMFunctionSignatureTest >> setUp [
 
 	paramArray := LLVMParameterArray withSize: 2.
-	paramArray at: 1 put: (LLVMInt32 new handle getHandle).
-	paramArray at: 2 put: (LLVMInt32 new handle getHandle).
-	ret := LLVMInt32 new.
+	paramArray at: 1 put: (LLVMInt32 create handle getHandle).
+	paramArray at: 2 put: (LLVMInt32 create handle getHandle).
+	ret := LLVMInt32 create.
 	sig := LLVMFunctionSignature withReturnType: ret parametersVector: paramArray arity: 2 andIsVaridic: false.
 
 ]
