@@ -7,7 +7,7 @@ Class {
 { #category : #resources }
 LLVMType class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #resources }

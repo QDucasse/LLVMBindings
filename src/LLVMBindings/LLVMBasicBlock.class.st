@@ -21,7 +21,7 @@ LLVMBasicBlock class >> createInContext: anLLVMContext withName: aName [
 { #category : #linking }
 LLVMBasicBlock class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #accessing }

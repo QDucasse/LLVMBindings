@@ -13,7 +13,7 @@ LLVMBuilder class >> create [
 { #category : #'instance creation' }
 LLVMBuilder class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #building }

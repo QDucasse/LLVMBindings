@@ -28,7 +28,7 @@ LLVMMemoryBuffer class >> createWithData: aString range: anInteger name: aName a
 { #category : #resources }
 LLVMMemoryBuffer class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #resources }

@@ -12,7 +12,7 @@ Class {
 { #category : #'instance creation' }
 LLVMTargetMachine class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #'instance creation' }
