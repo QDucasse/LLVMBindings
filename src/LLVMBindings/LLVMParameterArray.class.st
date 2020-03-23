@@ -10,5 +10,5 @@ Class {
 { #category : #'instance creation' }
 LLVMParameterArray class >> withSize: aNumber [
 
-	^  FFIArray newType: LLVMType size: aNumber
+	^  FFIArray externalNewType: LLVMType size: aNumber
 ]
