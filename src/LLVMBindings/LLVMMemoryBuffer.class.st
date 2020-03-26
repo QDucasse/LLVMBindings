@@ -32,6 +32,12 @@ LLVMMemoryBuffer class >> ffiLibrary [
 ]
 
 { #category : #resources }
+LLVMMemoryBuffer >> contentsInByteArray [
+
+	^ self start asByteArray
+]
+
+{ #category : #resources }
 LLVMMemoryBuffer >> ffiLibrary [
 
 	^ self class ffiLibrary
