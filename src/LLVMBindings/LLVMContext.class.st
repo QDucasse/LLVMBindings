@@ -15,7 +15,7 @@ LLVMContext class >> create [
 { #category : #'instance creation' }
 LLVMContext class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #finalization }

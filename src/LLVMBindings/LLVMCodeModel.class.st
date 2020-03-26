@@ -18,7 +18,7 @@ Class {
 LLVMCodeModel class >> enumDecl [
 
 	^ #(
-	llvmodeModelDefault     0
+	llvmCodeModelDefault     0
 	llvmCodeModelJITDefault 1
 	llvmCodeModelTiny       2
 	llvmCodeModelSmall      3

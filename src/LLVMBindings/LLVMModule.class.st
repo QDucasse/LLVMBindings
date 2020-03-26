@@ -21,7 +21,7 @@ Class {
 { #category : #'instance creation' }
 LLVMModule class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #'instance creation' }

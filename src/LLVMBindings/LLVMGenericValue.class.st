@@ -28,7 +28,7 @@ LLVMGenericValue class >> createGenericUnsignedInt32From: anInteger [
 { #category : #'as yet unclassified' }
 LLVMGenericValue class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #'as yet unclassified' }
