@@ -25,13 +25,25 @@ LLVMFunction >> nextParameterOf: aParameter [
 { #category : #adding }
 LLVMFunction >> parameterAtIndex: anInteger [
 
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetParam(LLVMFunction self, uint anInteger))
+	anInteger > self parametersNumber ifTrue: [ 
+		LLVMIndexOutOfBounds  new
+		index: anInteger;
+		signal].
+	^ self powerParameterAtIndex: anInteger - 1	
 ]
 
 { #category : #adding }
 LLVMFunction >> parametersNumber [
 
 	^ self ffiCall: #(uint LLVMCountParams(LLVMFunction self))
+]
+
+{ #category : #adding }
+LLVMFunction >> powerParameterAtIndex: anInteger [
+	"Low-level accessing to the parameters.
+	Please use parameterAtIndex: to access parameters with the correct checks" 
+
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetParam(LLVMFunction self, uint anInteger))
 ]
 
 { #category : #adding }

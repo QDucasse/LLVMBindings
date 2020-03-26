@@ -1,10 +1,13 @@
+"
+Used in the Disassembler when an invalid instruction is being processed.
+"
 Class {
 	#name : #LLVMInvalidInstructionError,
 	#superclass : #Error,
 	#instVars : [
 		'instruction'
 	],
-	#category : #'LLVMBindings-Disassembler'
+	#category : #'LLVMBindings-Error'
 }
 
 { #category : #accessing }
