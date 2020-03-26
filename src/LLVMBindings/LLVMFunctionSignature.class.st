@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-LLVMFunctionSignature class >> withReturnType: aType parametersVector: anArray arity: anInteger andIsVaridic: aBoolean [
+LLVMFunctionSignature class >> withReturnType: aType parametersVector: anArray arity: anInteger andIsVariadic: aBoolean [
 
 "Output a function type consisting of a specified signature"
 
@@ -26,7 +26,7 @@ LLVMFunctionSignature >> addToModule: aModule withName: aName [
 ]
 
 { #category : #adding }
-LLVMFunctionSignature >> isVaridic [
+LLVMFunctionSignature >> isVariadic [
 
 	^ self ffiCall: #(Boolean LLVMIsFunctionVarArg(LLVMFunctionSignature self))
 ]
