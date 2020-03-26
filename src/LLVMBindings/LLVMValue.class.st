@@ -18,7 +18,7 @@ Class {
 { #category : #resources }
 LLVMValue class >> ffiLibrary [
 
-	^ 'libLLVM.dylib' asFFILibrary
+	^ LLVMLibrary
 ]
 
 { #category : #resources }
