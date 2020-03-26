@@ -9,14 +9,6 @@ Repository for the booklet and tutorial: https://github.com/SquareBracketAssocia
 ---
 The following code corresponds to the tutorial described in the booklet. It consists of the creation of a `sum` function in LLVM intermediate representation (IR).
 
-## Enumeration initialisation
-
----
-
-External enumerations have to be initialised at the start. The three main enumerations
-
-
-
 ## Module definition
 
 ---
@@ -88,6 +80,20 @@ Next we need to get the actual values provided to the function and perform the `
   tmp := builder buildAdd: param1 getHandle to: param2 getHandle andStoreUnder: 'tmp'.
   builder buildReturnStatementFromValue: tmp.
 ```
+
+## Enumeration initialisation
+
+---
+
+External enumerations have to be initialised at the start. The three main enumerations are used when emitting LLVM IR to machine code to give more precision on the optimisations, code model or the type of the output. The four enumerations have to be initialised.
+
+```
+  LLVMCodeGenFileType initialize.
+  LLVMCodeGenOptLevel initialize.
+  LLVMCodeModel initialize.
+  LLVMRelocMode initialize.
+```
+
 
 ## Target Machine Code Emission
 
