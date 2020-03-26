@@ -16,7 +16,7 @@ LLVMFunctionSignatureTest >> setUp [
 	paramArray at: 1 put: (LLVMInt32 create handle getHandle).
 	paramArray at: 2 put: (LLVMInt32 create handle getHandle).
 	ret := LLVMInt32 create.
-	sig := LLVMFunctionSignature withReturnType: ret parametersVector: paramArray arity: 2 andIsVaridic: false.
+	sig := LLVMFunctionSignature withReturnType: ret parametersVector: paramArray arity: 2 andIsVariadic: false.
 
 ]
 
@@ -35,5 +35,5 @@ LLVMFunctionSignatureTest >> testReturnTypeSetAndRead [
 { #category : #tests }
 LLVMFunctionSignatureTest >> testVaridicSetAndRead [
 
-	self assert: sig isVaridic equals: false
+	self assert: sig isVariadic equals: false
 ]
