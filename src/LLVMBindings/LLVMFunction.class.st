@@ -13,6 +13,12 @@ LLVMFunction >> basicParameterAtIndex: anInteger [
 ]
 
 { #category : #adding }
+LLVMFunction >> delete [ 
+
+	self ffiCall: #(void LLVMDeleteFunction(LLVMFunction self))
+]
+
+{ #category : #adding }
 LLVMFunction >> firstParameter [
 
 	^ self ffiCall: #(LLVMFunctionParameter LLVMGetFirstParam(LLVMFunction self))

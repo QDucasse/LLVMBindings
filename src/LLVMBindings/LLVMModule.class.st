@@ -39,6 +39,19 @@ LLVMModule class >> withName: aName [
 ]
 
 { #category : #finalization }
+LLVMModule >> dataLayout [ 
+
+	^ self ffiCall: #(String LLVMGetDataLayoutStr(LLVMModule self))
+]
+
+{ #category : #finalization }
+LLVMModule >> dataLayout: dataLayout [
+
+	^ self ffiCall: #(String LLVMSetDataLayoutStr(LLVMModule self,
+																String dataLayout))
+]
+
+{ #category : #finalization }
 LLVMModule >> dispose [
 
 	self ffiCall: #(void LLVMDisposeModule(LLVMModule self))
@@ -99,6 +112,13 @@ LLVMModule >> ffiLibrary [
 LLVMModule >> finalize [ 
 
 	self dispose
+]
+
+{ #category : #finalization }
+LLVMModule >> getFunctionFromName: functionName [ 
+
+	^ self ffiCall: #(LLVMFunction LLVMGetNamedFunction(LLVMModule self,
+																		String functionName))
 ]
 
 { #category : #finalization }

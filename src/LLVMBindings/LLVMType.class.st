@@ -19,5 +19,5 @@ LLVMType >> ffiLibrary [
 { #category : #resources }
 LLVMType >> printString [ 
 
-	self ffiCall: #(String LLVMPrintTypeToString(LLVMType self))
+	^ self ffiCall: #(String LLVMPrintTypeToString(LLVMType self))
 ]

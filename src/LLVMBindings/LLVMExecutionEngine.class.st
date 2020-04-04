@@ -46,6 +46,13 @@ LLVMExecutionEngine class >> initialize [
 	LLVMFunction_PTR := FFIExternalValueHolder ofType: 'LLVMFunction'.
 ]
 
+{ #category : #initialization }
+LLVMExecutionEngine >> addModule: module [
+	
+	^ self ffiCall: #(void LLVMAddModule(LLVMExecutionEngine self,
+													LLVMModule module))
+]
+
 { #category : #resources }
 LLVMExecutionEngine >> ffiLibrary [
 
@@ -75,7 +82,7 @@ LLVMExecutionEngine >> findFunctionFromName: name [
 { #category : #initialization }
 LLVMExecutionEngine >> getFunctionAddress: functionName [
 
-	^ self ffiCall: #(uint64 LLVMGetFunctionAddress(LLVMExecutionEngine self,
+	^ self ffiCall: #(int LLVMGetFunctionAddress(LLVMExecutionEngine self,
 																  String functionName))
 ]
 
@@ -85,4 +92,10 @@ LLVMExecutionEngine >> getFunctionIn: functionHolder fromName: name [
 	^ self ffiCall: #(Boolean LLVMFindFunction(LLVMExecutionEngine self,
 															String name,
 															LLVMFunction_PTR functionHolder))
+]
+
+{ #category : #initialization }
+LLVMExecutionEngine >> targetMachine [
+
+	^ self ffiCall: #(LLVMTargetMachine LLVMGetExecutionEngineTargetMachine(LLVMExecutionEngine self))
 ]
