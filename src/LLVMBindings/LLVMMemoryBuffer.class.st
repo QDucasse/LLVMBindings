@@ -34,7 +34,7 @@ LLVMMemoryBuffer class >> ffiLibrary [
 { #category : #resources }
 LLVMMemoryBuffer >> contentsInByteArray [
 
-	^ self start asByteArray
+	^ self start copyFrom: 1 to: self size
 ]
 
 { #category : #resources }
