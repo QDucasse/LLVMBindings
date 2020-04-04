@@ -44,7 +44,13 @@ LLVMMemoryBuffer >> ffiLibrary [
 ]
 
 { #category : #resources }
+LLVMMemoryBuffer >> size [
+
+	^ self ffiCall: #(size_t LLVMGetBufferSize(LLVMMemoryBuffer self))
+]
+
+{ #category : #resources }
 LLVMMemoryBuffer >> start [
 
-	^ self ffiCall: #(String LLVMGetBufferStart(LLVMMemoryBuffer self))
+	^ self ffiCall: #(void* LLVMGetBufferStart(LLVMMemoryBuffer self))
 ]

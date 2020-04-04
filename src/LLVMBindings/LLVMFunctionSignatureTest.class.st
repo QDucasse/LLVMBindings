@@ -29,7 +29,7 @@ LLVMFunctionSignatureTest >> testParametersNumberSetAndRead [
 { #category : #tests }
 LLVMFunctionSignatureTest >> testReturnTypeSetAndRead [
 
-	self assert: sig returnType equals: ret
+	self assert: sig returnType getHandle getHandle equals: ret getHandle getHandle
 ]
 
 { #category : #tests }

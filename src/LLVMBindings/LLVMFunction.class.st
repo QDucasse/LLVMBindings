@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #adding }
+LLVMFunction >> basicParameterAtIndex: anInteger [
+	"Low-level accessing to the parameters.
+	Please use parameterAtIndex: to access parameters with the correct checks" 
+
+	^ self ffiCall: #(LLVMFunctionParameter LLVMGetParam(LLVMFunction self, uint anInteger))
+]
+
+{ #category : #adding }
 LLVMFunction >> firstParameter [
 
 	^ self ffiCall: #(LLVMFunctionParameter LLVMGetFirstParam(LLVMFunction self))
@@ -29,21 +37,13 @@ LLVMFunction >> parameterAtIndex: anInteger [
 		LLVMIndexOutOfBounds  new
 		index: anInteger;
 		signal].
-	^ self powerParameterAtIndex: anInteger - 1	
+	^ self basicParameterAtIndex: anInteger - 1	
 ]
 
 { #category : #adding }
 LLVMFunction >> parametersNumber [
 
 	^ self ffiCall: #(uint LLVMCountParams(LLVMFunction self))
-]
-
-{ #category : #adding }
-LLVMFunction >> powerParameterAtIndex: anInteger [
-	"Low-level accessing to the parameters.
-	Please use parameterAtIndex: to access parameters with the correct checks" 
-
-	^ self ffiCall: #(LLVMFunctionParameter LLVMGetParam(LLVMFunction self, uint anInteger))
 ]
 
 { #category : #adding }
